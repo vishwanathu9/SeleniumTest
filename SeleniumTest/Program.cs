@@ -7,8 +7,7 @@ namespace SeleniumTest
 {
     class Program
     {
-        IWebDriver driver = new ChromeDriver();
-
+       
          static void Main(string[] args)
         {            
           
@@ -16,24 +15,25 @@ namespace SeleniumTest
         [SetUp]
         public void Initialize()
         {
-            driver.Navigate().GoToUrl("https://demosite.executeautomation.com/index.html?UserName=&Login=Login");
+            PropertiesColleciton.driver = new ChromeDriver();
+            PropertiesColleciton.driver.Navigate().GoToUrl("https://demosite.executeautomation.com/index.html?UserName=&Login=Login");
             Console.WriteLine("Opened url !");
         }
         [Test]
         public void ExecuteTest()
         {
             //Title 
-            SeleniumSetMethods.SelectDropDown(driver, "TitleId", "Mr.", "Id");
-            SeleniumSetMethods.EnterText(driver, "Initial", "Executeutomation", "Id");
-            SeleniumSetMethods.Click(driver, "Save", "Name");
-            Console.WriteLine("Dropdown" + SeleniumGetMethods.GetTextFromDDL(driver, "TitleId", "Id"));
-            Console.WriteLine("TextBox" + SeleniumGetMethods.GetText(driver, "Initial", "Name"));
+            SeleniumSetMethods.SelectDropDown( "TitleId", "Mr.", PropertyType.Id);
+            SeleniumSetMethods.EnterText( "Initial", "Executeutomation", PropertyType.Id);
+            SeleniumSetMethods.Click( "Save", PropertyType.Name);
+            Console.WriteLine("Dropdown" + SeleniumGetMethods.GetTextFromDDL( "TitleId", PropertyType.Id));
+            Console.WriteLine("TextBox" + SeleniumGetMethods.GetText( "Initial", PropertyType.Name));
 
         }
         [TearDown]
         public void CleanUp()
         {
-            driver.Close();
+            PropertiesColleciton.driver.Close();
 
         }
     }
