@@ -23,8 +23,9 @@ namespace SeleniumTest
 
         public EAPageObject Login(string UserName,string Password)
         {
-            txtUserName.SendKeys(UserName);
-            txtPassword.SendKeys(Password);
+
+            txtUserName.EnterText(UserName);
+            txtPassword.EnterText(Password);
             btnLogin.Submit();
             return new EAPageObject();
         }

@@ -30,10 +30,11 @@ namespace SeleniumTest
 
         public void FillUserForm(string initial,string middleName,string firstname)
         {
-            txtInitial.SendKeys(initial);
-            txtFirstName.SendKeys(firstname);
-            txtFirstName.SendKeys(middleName);
-            btnSave.Click();
+
+            txtInitial.EnterText(initial);
+            txtFirstName.EnterText(firstname);
+            txtFirstName.EnterText(middleName);
+            btnSave.Clicks();
         }
     }
 }
