@@ -22,12 +22,13 @@ namespace SeleniumTest
         [Test]
         public void ExecuteTest()
         {
+            ExlLib.PopulateInCollection(@"C:\Users\visupadh\Desktop\Book1.xlsx");
 
             //Login to App
 
             LoginPageObject Pagelogin = new LoginPageObject();
-            EAPageObject pageEA = Pagelogin.Login("hello", "vishwanath");
-            pageEA.FillUserForm("kk", "Karthik", "sngh");
+            EAPageObject pageEA = Pagelogin.Login(ExlLib.ReadData(1,"UserName"), ExlLib.ReadData(1, "Password"));
+            pageEA.FillUserForm(ExlLib.ReadData(1, "Initial"), ExlLib.ReadData(1, "MiddleName"), ExlLib.ReadData(1, "FirstName"));
            
             //pageEA.txtInitial.SendKeys("Hello vishwanath");
             //pageEA.btnSave.Click();
